@@ -5,6 +5,9 @@
 .nav-link {
     color: #fff!important;
 }
+.fieldSearch {
+    margin-left: -150px;
+}
 
 #searchInput {
     font-family: Verdana, Geneva, Tahoma, sans-serif;

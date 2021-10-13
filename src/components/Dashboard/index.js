@@ -8,7 +8,9 @@ const Dashboard = () => {
     return (
         <div>
             <Navbar />
-            test
+            <div className="mainContainer">
+                test
+            </div>
         </div>
     )
 }

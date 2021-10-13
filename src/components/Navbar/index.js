@@ -20,11 +20,11 @@ const NavbarFunction = () => {
                 <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse" id="navbarNav">
-                <ul className="navbar-nav tml-auto">
-                    <li className="nav-item">
+                    <div>
                         <input type="text" name="searchBtn" id="searchInput"/>
                         <label id="searchBtn">Buscar</label>
-                    </li>
+                    </div>
+                <ul className="navbar-nav ml-auto">
                     <li className="nav-item">
                        <Link className="nav-link" to="/">Perfil</Link>
                     </li>
