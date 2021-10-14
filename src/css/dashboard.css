@@ -6,7 +6,108 @@
 
 .mainContainer {
     width: 100%;
-    height: 100%;
+    height: 80vh;
     margin-top: 58px;
-    border: 1px solid #f21;
+    background-image: url('https://www.wallpaperup.com/uploads/wallpapers/2017/05/06/1089109/5ec08a98f5cd10e2af8329308185e23d-1400.jpg');
+}
+
+
+.offerProductSection {
+    margin: 10px;
+    height: 400px;
+    width: auto;
+    padding-top: 15px;
+}
+
+.offerNameSection {
+    font-size: 30px;
+    margin-left: 20px;
+    color: #fff;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.offerProductSubSection {
+    width: 100%;
+    height: 370px;
+    border-radius: 3px;
+    text-align: center;
+    display: inline-flex;
+    justify-content: space-around;
+}
+
+.offerCard {
+    border: 2px solid #f21;
+    width: 300px;
+    height: 100%;
+}
+
+.cardImg {
+    border: 1px solid hotpink;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70%;
+}
+
+.cardDescription {
+    border: 1px solid hotpink;
+    height: 15%;
+}
+
+.cardPrice {
+    border: 1px solid hotpink;
+    height: 15%;
+}
+
+.categorySection {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.categoryBubble {
+    width: 150px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
+    background-color: transparent;
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.categoryBubble:focus {
+    outline: none;
+}
+
+.categoryBubble:hover {
+    background-color: #fff;
+    color: black;
+}
+
+.categoryBubble:active {
+    transform: translateY(1px);
+}
+
+.footerDisplay {
+    background-image: url('https://www.wallpaperup.com/uploads/wallpapers/2013/12/04/183790/c6c49b5e119ef01724c44f47a2a50375-1400.jpg');
+    width: 100%;
+    height: 95px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: #fff;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.footerAddress {
+    display: block;
+    text-align: center;
 }

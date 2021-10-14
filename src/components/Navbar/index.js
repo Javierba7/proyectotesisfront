@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -6,11 +6,11 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 import '../../css/navbar.css';
 
-const NavbarFunction = () => {
-
+const NavbarFunction = ({ verifyToken }) => {
+    
     const cleanLocal = () => {
         localStorage.clear();
-    }
+    };
 
     return (
         <div>
@@ -19,6 +19,7 @@ const NavbarFunction = () => {
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
             </button>
+            {verifyToken ? 
             <div className="collapse navbar-collapse" id="navbarNav">
                     <div>
                         <input type="text" name="searchBtn" id="searchInput"/>
@@ -26,7 +27,7 @@ const NavbarFunction = () => {
                     </div>
                 <ul className="navbar-nav ml-auto">
                     <li className="nav-item">
-                       <Link className="nav-link" to="/">Perfil</Link>
+                    <Link className="nav-link" to="/">Perfil</Link>
                     </li>
                     <li className="nav-item">
                         <Link  className="nav-link" to="/">Carrito</Link>
@@ -36,6 +37,19 @@ const NavbarFunction = () => {
                     </li>
                 </ul>
             </div>
+            : 
+            <div className="collapse navbar-collapse" id="navbarNav">
+                    <div>
+                        <input type="text" name="searchBtn" id="searchInput"/>
+                        <label id="searchBtn">Buscar</label>
+                    </div>
+                <ul className="navbar-nav ml-auto">
+                    <li className="nav-item">
+                        <Link className="nav-link loginBtn" to="/login">Iniciar Sesión</Link>
+                    </li>
+                </ul>
+            </div> 
+            }
         </nav>
     </div>
     )

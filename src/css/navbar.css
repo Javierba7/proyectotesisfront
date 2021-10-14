@@ -1,5 +1,5 @@
 .bg-dark {
-    background-color: #368fcf!important;
+    background-image: url('https://www.wallpaperup.com/uploads/wallpapers/2013/02/26/45424/548fc5d10aa5966345f0c74c83e874e7-1400.jpg');
 }
 
 .nav-link {
@@ -45,6 +45,11 @@
 
 .nav-link:hover {
     border-bottom: 1px solid #fff;
+}
+
+.loginBtn {
+    border: 1px solid #fff;
+    border-radius: 5px;
 }
 
 /* Para 480px */  
