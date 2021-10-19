@@ -1,4 +1,4 @@
-import React, { useEffect, useState }from 'react';
+import React, { useEffect, useState } from 'react';
 
 import '../../css/dashboard.css';
 
@@ -7,6 +7,8 @@ import Navbar from '../Navbar';
 const Dashboard = () => {
 
     const [verifyToken, setVerifyToken] = useState(false);
+    const [products, setProducts] = useState([]);
+    const [test, setTest] = useState([]);
 
     const checkLocalStorage = () => {
         const token = localStorage.getItem('auth-token');
@@ -15,10 +17,41 @@ const Dashboard = () => {
         }
         return setVerifyToken(false);
     };
+    
+    const getProducts = async () => {
+        const response = await fetch('http://localhost:5000/api/product');
+        const products = await response.json();
+        setProducts(products);
+        displayProductsInOffer();
+    }
+
+    const displayProductsInOffer = () => {
+        const temp = [];
+        for (let i = 0; i < 4; i++) {
+            if (products[i]) {
+                temp.push((<div className="offerCard">
+                    <div className="cardImg">
+                        <img className="imgSize"  src={products[i].imgUrl} alt={`${products[i].name}-non`}/>
+                    </div>
+                    <div className="cardDescription">
+                        {products[i].name}
+                    </div>
+                    <div className="cardPrice">
+                        {products[i].price}
+                    </div>
+                </div>));
+            }
+        }
+        setTest(temp);
+    };
 
     useEffect(() => {
         checkLocalStorage();
     }, [verifyToken]);
+
+    useEffect(() => {
+        getProducts();
+    });
 
     return (
         <div>
@@ -29,39 +62,9 @@ const Dashboard = () => {
                         Productos en oferta!
                     </div>
                     <div className="offerProductSubSection">
-                        <div className="offerCard">
-                            <div className="cardImg">
-                                img
-                            </div>
-                            <div className="cardDescription">
-                                description
-                            </div>
-                            <div className="cardPrice">
-                                price
-                            </div>
-                        </div>
-                        <div className="offerCard">
-                            <div className="cardImg">
-                                img
-                            </div>
-                            <div className="cardDescription">
-                                description
-                            </div>
-                            <div className="cardPrice">
-                                price
-                            </div>
-                        </div>
-                        <div className="offerCard">
-                            <div className="cardImg">
-                                img
-                            </div>
-                            <div className="cardDescription">
-                                description
-                            </div>
-                            <div className="cardPrice">
-                                price
-                            </div>
-                        </div>
+                        {test.map(el => {
+                            return el;
+                        })}
                     </div>
                     <div className="categorySection">
                     <div className="offerNameSection">
@@ -98,6 +101,6 @@ const Dashboard = () => {
             </footer>
         </div>
     )
-}
+};
 
 export default Dashboard;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -7,9 +7,13 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 import '../../css/navbar.css';
 
 const NavbarFunction = ({ verifyToken }) => {
-    
-    const cleanLocal = () => {
+
+    const cleanLocal = (e) => {
         localStorage.clear();
+    };
+
+    const reloadPage = () => {
+        window.location.reload();
     };
 
     return (
@@ -33,7 +37,7 @@ const NavbarFunction = ({ verifyToken }) => {
                         <Link  className="nav-link" to="/">Carrito</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" onClick={cleanLocal} to="/">Cerrar Sesión</Link>
+                        <Link className="nav-link" onClick={(e) => {cleanLocal(); reloadPage();}} to="/">Cerrar Sesión</Link>
                     </li>
                 </ul>
             </div>
