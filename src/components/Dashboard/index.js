@@ -1,60 +1,73 @@
-import React, { useEffect, useState } from 'react';
+import React, { Component } from 'react';
 
 import '../../css/dashboard.css';
 
 import Navbar from '../Navbar';
 
-const Dashboard = () => {
-
-    const [verifyToken, setVerifyToken] = useState(false);
-    const [products, setProducts] = useState([]);
-    const [test, setTest] = useState([]);
-
-    const checkLocalStorage = () => {
-        const token = localStorage.getItem('auth-token');
-        if (token !== null) {
-            return setVerifyToken(true);
+export default class Dashboard extends Component {
+    constructor(props) {
+        super(props);
+        this.state =  {
+            products: [],
+            verifyToken: false,
+            newProducts: []
         }
-        return setVerifyToken(false);
-    };
-    
-    const getProducts = async () => {
-        const response = await fetch('http://localhost:5000/api/product');
-        const products = await response.json();
-        setProducts(products);
-        displayProductsInOffer();
+
     }
 
-    const displayProductsInOffer = () => {
+    checkLocalStorage() {
+        const token = localStorage.getItem('auth-token');
+        if (token !== null) {
+            this.setState({
+                verifyToken: true
+            });
+        }
+        this.setState({
+            verifyToken: false
+        });
+    };
+
+    async getProducts(){
+        const response = await fetch('http://localhost:5000/api/product');
+        const products = await response.json();
+        this.setState({
+            products,
+        })
+        this.displayProductsInOffer();
+    }
+
+    displayProductsInOffer(){
         const temp = [];
         for (let i = 0; i < 4; i++) {
-            if (products[i]) {
+            if (this.state.products[i]) {
                 temp.push((<div className="offerCard">
                     <div className="cardImg">
-                        <img className="imgSize"  src={products[i].imgUrl} alt={`${products[i].name}-non`}/>
+                        <img className="imgSize"  src={this.state.products[i].imgUrl} alt={`${this.state.products[i].name}-non`}/>
                     </div>
                     <div className="cardDescription">
-                        {products[i].name}
+                        {this.state.products[i].name}
                     </div>
                     <div className="cardPrice">
-                        {products[i].price}
+                        {this.state.products[i].price}
                     </div>
                 </div>));
             }
         }
-        setTest(temp);
+
+        this.setState({
+            newProducts: temp
+        })
     };
 
-    useEffect(() => {
-        checkLocalStorage();
-    }, [verifyToken]);
+    componentDidMount() {
+        this.checkLocalStorage();
+        this.getProducts();
+    }
 
-    useEffect(() => {
-        getProducts();
-    });
-
-    return (
-        <div>
+    render() {
+        const { verifyToken, newProducts } = this.state; 
+        return (
+            <div>
             <Navbar verifyToken={verifyToken} />
             <div className="mainContainer">
                <div className="offerProductSection">
@@ -62,7 +75,7 @@ const Dashboard = () => {
                         Productos en oferta!
                     </div>
                     <div className="offerProductSubSection">
-                        {test.map(el => {
+                        {newProducts.map(el => {
                             return el;
                         })}
                     </div>
@@ -100,7 +113,6 @@ const Dashboard = () => {
                 </div>
             </footer>
         </div>
-    )
+        )
+    }
 };
-
-export default Dashboard;
