@@ -18,11 +18,11 @@ export default class Dashboard extends Component {
     checkLocalStorage() {
         const token = localStorage.getItem('auth-token');
         if (token !== null) {
-            this.setState({
+            return this.setState({
                 verifyToken: true
             });
         }
-        this.setState({
+        return this.setState({
             verifyToken: false
         });
     };
@@ -45,10 +45,14 @@ export default class Dashboard extends Component {
                         <img className="imgSize"  src={this.state.products[i].imgUrl} alt={`${this.state.products[i].name}-non`}/>
                     </div>
                     <div className="cardDescription">
-                        {this.state.products[i].name}
+                        {`Nombre: ${this.state.products[i].name}`}
+                        <div className="productsLeft">{`Restan: ${this.state.products[i].quantity}`}</div>
                     </div>
                     <div className="cardPrice">
-                        {this.state.products[i].price}
+                        {`$ ${this.state.products[i].price}`}
+                        <div>
+                            <button className="btnShopping">Agregar al carrito</button>
+                        </div>
                     </div>
                 </div>));
             }
@@ -65,7 +69,8 @@ export default class Dashboard extends Component {
     }
 
     render() {
-        const { verifyToken, newProducts } = this.state; 
+        const { verifyToken, newProducts } = this.state;
+        console.log(verifyToken); 
         return (
             <div>
             <Navbar verifyToken={verifyToken} />
