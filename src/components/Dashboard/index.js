@@ -85,35 +85,37 @@ export default class Dashboard extends Component {
                             return el;
                         })}
                     </div>
-                    <div className="categorySection">
-                        <div className="offerNameSection">
-                            Categorias
+                    <div className="test">
+                        <div className="categorySection">
+                            <div className="offerNameSection">
+                                Categorias
+                            </div>
+                                <button className="categoryBubble">
+                                    <Link to="/section/school" className="categoryBubble">
+                                        Escolar
+                                    </Link>
+                                </button>
+                                <button className="categoryBubble">
+                                    <Link to="/section/toys"  className="categoryBubble">
+                                        Jugueteria
+                                    </Link>
+                                </button>
+                                <button className="categoryBubble">
+                                    <Link to="/section/office"  className="categoryBubble">
+                                        Oficina
+                                    </Link>
+                                </button>
+                                <button className="categoryBubble">
+                                    <Link to="/section/shop"  className="categoryBubble">
+                                        Abarrotes
+                                    </Link>
+                                </button>
+                                <button className="categoryBubble">
+                                    <Link to="/section/gifts" className="categoryBubble">
+                                        Regalos
+                                    </Link>
+                                </button>
                         </div>
-                            <button className="categoryBubble">
-                                <Link to="/section/school" className="categoryBubble">
-                                    Escolar
-                                </Link>
-                            </button>
-                            <button className="categoryBubble">
-                                <Link to="/section/toys"  className="categoryBubble">
-                                    Jugueteria
-                                </Link>
-                            </button>
-                            <button className="categoryBubble">
-                                <Link to="/section/office"  className="categoryBubble">
-                                    Oficina
-                                </Link>
-                            </button>
-                            <button className="categoryBubble">
-                                <Link to="/section/shop"  className="categoryBubble">
-                                    Abarrotes
-                                </Link>
-                            </button>
-                            <button className="categoryBubble">
-                                <Link to="/section/gifts" className="categoryBubble">
-                                    Regalos
-                                </Link>
-                            </button>
                     </div>
                </div>
             </div>
