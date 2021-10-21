@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import {Link, Redirect} from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import '../../css/login.css';
 
@@ -34,7 +36,8 @@ export default class Register extends Component {
             const data = await response.json();
             
             if ( data.error ){ 
-               console.log(data.error)
+               console.log(data.error);
+               this.notify(data.error);
             } else { 
                 localStorage.setItem('auth-token', data.token);
                 this.setState({ token: data.token})
@@ -45,6 +48,7 @@ export default class Register extends Component {
          
     }
 
+    notify = (text) => toast(text);
     render() {
         if ( localStorage.getItem('auth-token') !== null || this.state.token !== '') {
             return <Redirect to="/" />
@@ -73,6 +77,17 @@ export default class Register extends Component {
                                 <span className="textSpan"><Link to="/register">¿No tienes cuenta?</Link></span>
                             </form>
                         </div>
+                        <ToastContainer
+                            position="top-right"
+                            autoClose={2000}
+                            hideProgressBar={false}
+                            newestOnTop={false}
+                            closeOnClick
+                            rtl={false}
+                            pauseOnFocusLoss
+                            draggable
+                            pauseOnHover
+                        />
                 </div>
         )
     }

@@ -53,9 +53,25 @@
 }
 
 /* Para 480px */  
-@media (max-width: 400px) {  
+@media (max-width: 250px) {  
     #searchInput {
         width: 200px;
         margin-left: auto;
      }
+
+     .loginBtn {
+         text-align: center;
+         width: 50%;
+     }
+     .fieldSearch {
+        margin-left: 0px;
+     }
+
+     #test {
+         position: absolute!important;
+     }
+
+    .navbar-brand {
+        font-size: 18px;
+    }
 } 

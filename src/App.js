@@ -5,6 +5,7 @@ import Dashboard from './components/Dashboard';
 import Login from './components/Login';
 import Register from './components/Register';
 import Section from './components/Section';
+import Profile from './components/Profile';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/login" exact component={Login}/>
         <Route path="/Register" exact component={Register}/>
         <Route path="/section/:sectionName" component={Section}/>
+        <Route exact path="/profile" component={Profile}/>
       </Router>
     </div>
   );

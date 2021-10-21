@@ -73,7 +73,7 @@ export default class Dashboard extends Component {
         const { verifyToken, newProducts } = this.state;
 
         return (
-            <div>
+            <>
             <Navbar verifyToken={verifyToken} />
             <div className="mainContainer">
                <div className="offerProductSection">
@@ -85,7 +85,7 @@ export default class Dashboard extends Component {
                             return el;
                         })}
                     </div>
-                    <div className="test">
+                    <div className="spaceCategory">
                         <div className="categorySection">
                             <div className="offerNameSection">
                                 Categorias
@@ -118,19 +118,19 @@ export default class Dashboard extends Component {
                         </div>
                     </div>
                </div>
+               <footer className="footerDisplay">
+                    <div className="footerAddress">
+                        <div>Dirección</div><span>Colonia Hermenegildo Galeana, Calle zacatula #417</span>
+                    </div>
+                    <div className="footerNumbers">
+                    <div>Teléfono</div><span>6565271691</span>
+                    </div>
+                    <div className="footerSocialMedia">
+                    <div>Redes sociales</div><span>Facebook</span>
+                    </div>
+                </footer>
             </div>
-            <footer className="footerDisplay">
-                <div className="footerAddress">
-                    <div>Dirección</div><span>Colonia Hermenegildo Galeana, Calle zacatula #417</span>
-                </div>
-                <div className="footerNumbers">
-                <div>Teléfono</div><span>6565271691</span>
-                </div>
-                <div className="footerSocialMedia">
-                <div>Redes sociales</div><span>Facebook</span>
-                </div>
-            </footer>
-        </div>
+            </>
         )
     }
 };
