@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import '../../css/dashboard.css';
 
@@ -70,7 +71,7 @@ export default class Dashboard extends Component {
 
     render() {
         const { verifyToken, newProducts } = this.state;
-        console.log(verifyToken); 
+
         return (
             <div>
             <Navbar verifyToken={verifyToken} />
@@ -85,24 +86,34 @@ export default class Dashboard extends Component {
                         })}
                     </div>
                     <div className="categorySection">
-                    <div className="offerNameSection">
-                        Categorias
-                    </div>
-                        <button className="categoryBubble">
-                            Escolar
-                        </button>
-                        <button className="categoryBubble">
-                            Jugueteria
-                        </button>
-                        <button className="categoryBubble">
-                            Oficina
-                        </button>
-                        <button className="categoryBubble">
-                            Abarrotes
-                        </button>
-                        <button className="categoryBubble">
-                            Regalos
-                        </button>
+                        <div className="offerNameSection">
+                            Categorias
+                        </div>
+                            <button className="categoryBubble">
+                                <Link to="/section/school" className="categoryBubble">
+                                    Escolar
+                                </Link>
+                            </button>
+                            <button className="categoryBubble">
+                                <Link to="/section/toys"  className="categoryBubble">
+                                    Jugueteria
+                                </Link>
+                            </button>
+                            <button className="categoryBubble">
+                                <Link to="/section/office"  className="categoryBubble">
+                                    Oficina
+                                </Link>
+                            </button>
+                            <button className="categoryBubble">
+                                <Link to="/section/shop"  className="categoryBubble">
+                                    Abarrotes
+                                </Link>
+                            </button>
+                            <button className="categoryBubble">
+                                <Link to="/section/gifts" className="categoryBubble">
+                                    Regalos
+                                </Link>
+                            </button>
                     </div>
                </div>
             </div>

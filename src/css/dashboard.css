@@ -6,16 +6,15 @@
 
 .mainContainer {
     width: 100%;
-    height: 80vh;
+    height: 100vh;
     margin-top: 58px;
     background-image: url('https://mcdn.wallpapersafari.com/medium/59/20/fFQ5oR.jpg');
 }
 
 
 .offerProductSection {
-    margin: 10px;
     height: 400px;
-    width: auto;
+    width: 100%;
     padding-top: 15px;
 }
 
@@ -49,6 +48,7 @@
     align-items: center;
     height: 70%;
     width: 100%;
+    border-bottom: 1px solid black;
 }
 
 .imgSize {
@@ -109,15 +109,18 @@
     border: 1px solid #fff;
     border-radius: 5px;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .categoryBubble:focus {
     outline: none;
+    text-decoration: none;
 }
 
 .categoryBubble:hover {
     background-color: #fff;
     color: black;
+    text-decoration: none;
 }
 
 .categoryBubble:active {
