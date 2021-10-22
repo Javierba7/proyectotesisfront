@@ -73,10 +73,9 @@ export default class Dashboard extends Component {
         const { verifyToken, newProducts } = this.state;
 
         return (
-            <>
-            <Navbar verifyToken={verifyToken} />
-            <div className="mainContainer">
-               <div className="offerProductSection">
+            <div className="mainContainer-dashboard">
+                <Navbar verifyToken={verifyToken} />
+                <div className="offerProductSection">
                     <div className="offerNameSection">
                         Productos en oferta!
                     </div>
@@ -85,39 +84,39 @@ export default class Dashboard extends Component {
                             return el;
                         })}
                     </div>
-                    <div className="spaceCategory">
-                        <div className="categorySection">
+                </div>
+                <div className="spaceCategory">
+                    <div className="categorySection">
                             <div className="offerNameSection">
                                 Categorias
                             </div>
-                                <button className="categoryBubble">
-                                    <Link to="/section/school" className="categoryBubble">
-                                        Escolar
-                                    </Link>
-                                </button>
-                                <button className="categoryBubble">
-                                    <Link to="/section/toys"  className="categoryBubble">
-                                        Jugueteria
-                                    </Link>
-                                </button>
-                                <button className="categoryBubble">
-                                    <Link to="/section/office"  className="categoryBubble">
-                                        Oficina
-                                    </Link>
-                                </button>
-                                <button className="categoryBubble">
-                                    <Link to="/section/shop"  className="categoryBubble">
-                                        Abarrotes
-                                    </Link>
-                                </button>
-                                <button className="categoryBubble">
-                                    <Link to="/section/gifts" className="categoryBubble">
-                                        Regalos
-                                    </Link>
-                                </button>
-                        </div>
+                            <button className="categoryBubble">
+                                <Link to="/section/school" className="categoryBubble">
+                                    Escolar
+                                </Link>
+                            </button>
+                            <button className="categoryBubble">
+                                <Link to="/section/toys"  className="categoryBubble">
+                                    Jugueteria
+                                </Link>
+                            </button>
+                            <button className="categoryBubble">
+                                <Link to="/section/office"  className="categoryBubble">
+                                    Oficina
+                                </Link>
+                            </button>
+                            <button className="categoryBubble">
+                                <Link to="/section/shop"  className="categoryBubble">
+                                    Abarrotes
+                                </Link>
+                            </button>
+                            <button className="categoryBubble">
+                                <Link to="/section/gifts" className="categoryBubble">
+                                    Regalos
+                                </Link>
+                            </button>
                     </div>
-               </div>
+                </div>
                <footer className="footerDisplay">
                     <div className="footerAddress">
                         <div>Dirección</div><span>Colonia Hermenegildo Galeana, Calle zacatula #417</span>
@@ -130,7 +129,6 @@ export default class Dashboard extends Component {
                     </div>
                 </footer>
             </div>
-            </>
         )
     }
 };

@@ -4,10 +4,9 @@
     box-sizing: border-box;
 }
 
-.mainContainer {
+.mainContainer-dashboard {
     width: 100%;
-    height: 100vh;
-    margin-top: 58px;
+    height: 100%;
     background-image: url('https://mcdn.wallpapersafari.com/medium/59/20/fFQ5oR.jpg');
 }
 
@@ -15,7 +14,6 @@
 .offerProductSection {
     height: 100%;
     width: 100%;
-    padding-top: 15px;
 }
 
 .offerNameSection {
@@ -100,8 +98,8 @@
     width: 100%;
     display: flex;
     justify-content: space-around;
-    align-items: center;
     margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 .categoryBubble {
@@ -113,8 +111,7 @@
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 20px;
     background-color: transparent;
-    color: #fff;
-    border: 1px solid #fff;
+    color: black;
     border-radius: 5px;
     cursor: pointer;
     text-decoration: none;
@@ -129,6 +126,7 @@
     background-color: #fff;
     color: black;
     text-decoration: none;
+    border: none;
 }
 
 .categoryBubble:active {
@@ -151,51 +149,40 @@
     text-align: center;
 }
 
-/*RESPOSIVE DESIGN*/
-@media (max-width: 400px) {
+@media (max-width: 480px) {
 
-    .mainContainer {
+    .mainContainer-dashboard {
         width: 100%;
-        height: 100vh;
+        height: 100%;
         background-image: url('https://mcdn.wallpapersafari.com/medium/59/20/fFQ5oR.jpg');
     }
-    
-    
-    .offerProductSection {
-        width: 100%;
-        height: 100%;
-    }
-    
-    .offerNameSection {
-        font-size: 10px;
-        margin-left: 20px;
-        color: #fff;
-        text-shadow: 1px 1px black;
-        font-family: Georgia, 'Times New Roman', Times, serif;
-    }
-    
-    .offerProductSubSection {
-        border-radius: 3px;
-        text-align: center;
-        display: grid;
 
-    }
-    
-    .spaceCategory {
+    .offerNameSection {
         width: 100%;
-        height: 50px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        color: #fff;
+        font-size: 25px;
+        text-align: center;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        background-color: rgba(0, 0, 0, 0.501);
+        margin-left: 0;
     }
-    
+
+    .offerProductSubSection {
+        width: 100%;
+        height: auto;
+        text-align: center;
+        display: block;
+    }
+
     .offerCard {
-        font-size: 13px;
         width: 150px;
-        height: 100%;
+        height: 50%;
         border: 1px solid black;
         border-radius: 4px;
+        font-size: 16px;
         margin-bottom: 10px;
+        margin-left: 30%;
+        margin-top: 10px;
     }
     
     .cardImg {
@@ -209,14 +196,14 @@
     
     .imgSize {
         width: 100%;
-        height: 100%;
+        height: 150px;
         border-top-left-radius: 5px;
         border-top-right-radius: 5px;
         border-top: 1px solid black;
     }
     
     .cardDescription {
-        height: 20%;
+        height: 15%;
         background-color: #fff;
         padding-top: 5px;
         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -236,36 +223,32 @@
     
     .btnShopping {
         color: black;
+        width: 150px;
+        height: 30px;
         font-family: Verdana, Geneva, Tahoma, sans-serif;
         background-color: #febd69;
         border-radius: 4px;
-        font-weight: 400;
-        font-size: 10px;
         padding: 2px;
+        font-size: 14px;
     }
-    
     .categorySection {
         width: 100%;
-        display: flex;
-        justify-content: space-around;
+        flex-direction: column;
         align-items: center;
-        margin-top: 30px;
     }
-    
+
     .categoryBubble {
         width: 150px;
         height: 50px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
         font-family: Georgia, 'Times New Roman', Times, serif;
         font-size: 20px;
         background-color: transparent;
-        color: #fff;
-        border: 1px solid #fff;
+        color: black;
         border-radius: 5px;
         cursor: pointer;
         text-decoration: none;
+        margin-bottom: 10px;
+        margin-top: 5px;
     }
     
     .categoryBubble:focus {
@@ -282,23 +265,16 @@
     .categoryBubble:active {
         transform: translateY(1px);
     }
-    
+    /*footer section*/
     .footerDisplay {
         background-image: url('https://www.wallpaperup.com/uploads/wallpapers/2013/12/04/183790/c6c49b5e119ef01724c44f47a2a50375-1400.jpg');
         width: 100%;
-        height: 95px;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
+        height: 270px;
+        flex-direction: column;
+        text-align: center;
         color: #fff;
         font-family: Georgia, 'Times New Roman', Times, serif;
+        font-size: 17px;
+        margin-bottom: 10px;
     }
-    
-    .footerAddress {
-        display: block;
-        text-align: center;
-    }
-    
-
-
 }
