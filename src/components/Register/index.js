@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import {Link, Redirect} from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import '../../css/login.css';
 
@@ -21,6 +23,8 @@ export default class Register extends Component {
     handleChange = e => {
         this.setState({[e.target.name]: e.target.value});
     }
+
+    notify = (text) => toast(text);
 
     handleSubmit = async (e) => {
         e.preventDefault();
@@ -46,8 +50,9 @@ export default class Register extends Component {
             
             if ( data.error ){
                 console.log(data.error);
-                
+                this.notify(data.error);
             } else {
+                this.notify('Te has registrado con exito');
                 this.timesOut(data.user);   
             }
         }catch (error) {
@@ -60,14 +65,13 @@ export default class Register extends Component {
             this.setState({
                 test: res
             });
-        }, 3000);
+        }, 2000);
       }
     
     render() {
         if ( this.state.test !== '') {
             return <Redirect to='/login' />
         }
-        console.log(this.state);
         return (
             <div>
             <div className="containerLogin">
@@ -116,6 +120,17 @@ export default class Register extends Component {
                              <input type="submit" onClick={this.handleSubmit} name="submit" value="Register"/>
                              <span className="textSpan"><Link to="/login">¿Ya tienes cuenta?</Link></span>
                          </div>
+                         <ToastContainer
+                            position="top-right"
+                            autoClose={2000}
+                            hideProgressBar={false}
+                            newestOnTop={false}
+                            closeOnClick
+                            rtl={false}
+                            pauseOnFocusLoss
+                            draggable
+                            pauseOnHover
+                        />
                 </div>
             </div>
         </div>

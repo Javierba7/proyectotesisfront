@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 import '../../css/dashboard.css';
+import jwt_decode from 'jwt-decode';
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import Navbar from '../Navbar';
 
@@ -15,6 +19,8 @@ export default class Dashboard extends Component {
         }
 
     }
+
+    notify = (text) => toast(text);
 
     checkLocalStorage() {
         const token = localStorage.getItem('auth-token');
@@ -41,7 +47,7 @@ export default class Dashboard extends Component {
         const temp = [];
         for (let i = 0; i < 4; i++) {
             if (this.state.products[i]) {
-                temp.push((<div className="offerCard">
+                temp.push((<div className="offerCard" key={`${this.state.products[i]._id}`}> 
                     <div className="cardImg">
                         <img className="imgSize"  src={this.state.products[i].imgUrl} alt={`${this.state.products[i].name}-non`}/>
                     </div>
@@ -52,7 +58,7 @@ export default class Dashboard extends Component {
                     <div className="cardPrice">
                         {`$ ${this.state.products[i].price}`}
                         <div>
-                            <button className="btnShopping">Agregar al carrito</button>
+                            <button onClick={() => this.addingToShoppingCart(this.state.products[i])} className="btnShopping">Agregar al carrito</button>
                         </div>
                     </div>
                 </div>));
@@ -67,6 +73,49 @@ export default class Dashboard extends Component {
     componentDidMount() {
         this.checkLocalStorage();
         this.getProducts();
+    }
+
+    async fetchUser() {
+        const token =  localStorage.getItem('auth-token');
+        const tokenDecoded = await jwt_decode(token);
+        const { _id: userId } = tokenDecoded;
+        const response = await fetch(`http://localhost:5000/api/users/${userId}`);
+        const user = await response.json();
+
+        return user;
+    } 
+    
+    async addingToShoppingCart(item) {
+        if (localStorage.getItem('auth-token')) {
+            const shoppingCart = JSON.parse(localStorage.getItem('shoppingCart'));
+
+            const { _id, name, price, imgUrl } = item;
+
+            const user = await this.fetchUser();
+
+            const { name: userName, lastName } = user;
+
+            const newObj = {
+                _id,
+                name,
+                price,
+                imgUrl,
+                date: new Date(),
+                fullname: `${userName} ${lastName}`
+            };
+
+            if (shoppingCart) {
+                const newShoppingCart = shoppingCart.concat([newObj]);
+                localStorage.setItem('shoppingCart', JSON.stringify(newShoppingCart)); 
+            } else {
+                const newShoppingCart = [newObj];
+                localStorage.setItem('shoppingCart', JSON.stringify(newShoppingCart));
+            }
+            this.notify('Se ha añadido al carrito');
+        }else {
+            this.notify('Primero inicia sesión')
+        }
+        
     }
 
     render() {
@@ -128,6 +177,17 @@ export default class Dashboard extends Component {
                     <div>Redes sociales</div><span>Facebook</span>
                     </div>
                 </footer>
+                <ToastContainer
+                    position="top-right"
+                    autoClose={1000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                />
             </div>
         )
     }

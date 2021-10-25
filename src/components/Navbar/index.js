@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
@@ -8,12 +9,13 @@ import '../../css/navbar.css';
 
 const NavbarFunction = ({ verifyToken }) => {
 
-    const cleanLocal = (e) => {
-        localStorage.clear();
-    };
-
     const reloadPage = () => {
         window.location.reload();
+    };
+
+    const cleanLocal = (e) => {
+        localStorage.clear();
+        return <Redirect to="/" />
     };
 
     return (
@@ -34,7 +36,7 @@ const NavbarFunction = ({ verifyToken }) => {
                     <Link className="nav-link" to="/profile">Perfil</Link>
                     </li>
                     <li className="nav-item">
-                        <Link  className="nav-link" to="/">Carrito</Link>
+                        <Link  className="nav-link" to="/shoppingCart">Carrito</Link>
                     </li>
                     <li className="nav-item">
                         <Link className="nav-link" onClick={(e) => {cleanLocal(); reloadPage();}} to="/">Cerrar Sesión</Link>

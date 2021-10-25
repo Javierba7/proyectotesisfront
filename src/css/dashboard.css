@@ -20,8 +20,9 @@
     font-size: 30px;
     margin-left: 20px;
     color: #fff;
-    text-shadow: 1px 1px black;
+    text-shadow: 2px 2px black;
     font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: rgba(128, 128, 128, 0.124);
 }
 
 .offerProductSubSection {
@@ -93,6 +94,9 @@
     font-weight: 400;
     padding: 2px;
 }
+.btnShopping:active {
+    transform: translateY(1px);
+}
 
 .categorySection {
     width: 100%;
@@ -152,7 +156,7 @@
 @media (max-width: 480px) {
 
     .mainContainer-dashboard {
-        width: 100%;
+        width: 92%;
         height: 100%;
         background-image: url('https://mcdn.wallpapersafari.com/medium/59/20/fFQ5oR.jpg');
     }

@@ -29,7 +29,8 @@ export default class Profile extends Component {
 
     checkLocalStorage() {
         const token = localStorage.getItem('auth-token');
-        if (token !== null) {
+        if (token) {
+            this.fetchUser();
             return this.setState({
                 verifyToken: true
             });
@@ -40,19 +41,17 @@ export default class Profile extends Component {
     };
 
     componentDidMount() {
-        this.fetchUser();
         this.checkLocalStorage();
     }
 
     render() {
         const { email, name, lastName, secondLastName } = this.state.user;
-        const { purchases, secondName } = this.state.user;
+        const { purchases = [], secondName } = this.state.user;
         const { verifyToken } = this.state;
         
-        if ( localStorage.getItem('auth-token') === null ) {
+        if (!localStorage.getItem('auth-token')) {
             return <Redirect to="/" />
-        }  
-
+        } 
         return (
             <div>
                 <Navbar verifyToken={verifyToken}/>   
@@ -90,27 +89,29 @@ export default class Profile extends Component {
                     </div>
                     <div className="shopCounting">
                         {
-                            purchases > 0 ? 
+                            purchases.length > 0 ? 
                             <div className="table-responsive">
                             <table class="table">
                                 <thead>
                                     <tr>
                                     <th scope="col">Nombre</th>
-                                    <th scope="col">Cantidad</th>
                                     <th scope="col">Precio</th>
                                     <th scope="col">Fecha de compra</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {purchases.map((el) => {
-                                        return (
-                                            <tr>
-                                                <th scope="row">{el.name}</th>
-                                                <td>{el.quantity}</td>
-                                                <td>{`$ ${el.price}`}</td>
-                                                <td>{el.date}</td>
-                                            </tr>
-                                        )
+                                        return el.map((item) => {
+                                            const { date } = item;
+                                            const newDate = new Date(date);
+                                            return (
+                                                <tr>
+                                                    <th scope="row">{item.name}</th>
+                                                    <td>{`$ ${item.price}`}</td>
+                                                    <td>{`${newDate.getDate()}/${newDate.getMonth() + 1}/${newDate.getFullYear()}`}</td>
+                                                </tr>
+                                            )
+                                        });
                                     })}
                                 </tbody>
                             </table>

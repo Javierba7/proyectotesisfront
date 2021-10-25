@@ -1,0 +1,162 @@
+.cartShoppingContainer {
+    width: 100%;
+    height: auto;
+}
+
+.cartSection {
+    width: 97%;
+    height: auto;
+    margin: auto;
+}
+
+.titleSectionCart {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid rgb(157, 162, 162);
+    text-align: center;
+    font-size: 50px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.tableSectionCart {
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    max-height: 400px;
+}
+
+.tableCartSpace {
+    width: 79%;
+    overflow-y: auto;
+}
+
+.table td, .table th {
+    vertical-align: none!important;
+}
+
+.imgSizeCart {
+    width: 50px;
+    height: 50px;
+}
+
+.tableHeaders {
+    color: white;
+    font-size: 20px;
+}
+
+.btnSectionCart {
+    width: 19%;
+    height: 300px;
+    background-color: #86cfda17;
+    border-radius: 5px;
+}
+
+.btnDeleteLocal {
+    text-align: center;
+    background-color: rgba(255, 0, 0, 0.391);
+    color: white;
+    border: none;
+    width: 100px;
+    height: 35px;
+    border-radius: 8px;
+}
+
+.btnDeleteLocal:active {
+    transform: translateY(1px);
+}
+
+.btnDeleteLocal:focus {
+    outline: none;
+}
+
+.shoppingMessage {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    border-bottom: 1px solid #000;
+}
+
+.priceSection {
+    text-align: center;
+    font-size: 30px;
+    flex-direction: column;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    border-bottom: 1px solid #86cfda;
+}
+
+.btnsSectionBuy {
+    width: 100%;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+}
+
+.btnBuy {
+    width: 150px;
+    height: 30px;
+    margin-top: 40px;
+    border-radius: 8px;
+}
+
+#boughtBtn {
+    background-color: orange;
+    color: #fff;
+    font-weight: bold;
+    border: 1px solid #000;
+}
+
+#boughtBtn:active {
+    transform: translateY(1px);
+}
+
+#boughtBtn:focus {
+    outline: none;
+}
+
+#cleanLocal {
+    background-color: rgba(255, 0, 0, 0.391);
+    color: #fff;
+    font-weight: bold;
+    border: 1px solid black;
+}
+
+#cleanLocal:active {
+    transform: translateY(1px);
+}
+
+#cleanLocal:focus {
+    outline: none;
+}
+
+.displayNoneBtn {
+    display: none;
+}
+
+@media (max-width: 480px) {  
+    .titleSectionCart {
+        font-size: 30px;
+    }
+
+    .tableSectionCart {
+        width: 100%;
+        flex-direction: column;
+        max-height: 500px;
+    }
+
+    .priceSection {
+        width: 100%;
+    }
+
+    .btnSectionCart {
+        width: 100%;
+    }
+
+    .tableCartSpace {
+        width: 100%;
+        height: 500px;
+    }
+} 
