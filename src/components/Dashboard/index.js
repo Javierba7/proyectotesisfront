@@ -34,31 +34,37 @@ export default class Dashboard extends Component {
         });
     };
 
+
+
     async getProducts(){
         const response = await fetch('http://localhost:5000/api/product');
         const products = await response.json();
+
         this.setState({
             products,
-        })
+        });
+
         this.displayProductsInOffer();
     }
 
     displayProductsInOffer(){
         const temp = [];
+
         for (let i = 0; i < 4; i++) {
-            if (this.state.products[i]) {
-                temp.push((<div className="offerCard" key={`${this.state.products[i]._id}`}> 
+            const random = Math.floor(Math.random() * this.state.products.length);
+            if (this.state.products[random]) {
+                temp.push((<div className="offerCard" key={`${this.state.products[random]._id}`}> 
                     <div className="cardImg">
-                        <img className="imgSize"  src={this.state.products[i].imgUrl} alt={`${this.state.products[i].name}-non`}/>
+                        <img className="imgSize"  src={this.state.products[random].imgUrl} alt={`${this.state.products[random].name}-non`}/>
                     </div>
                     <div className="cardDescription">
-                        {`Nombre: ${this.state.products[i].name}`}
-                        <div className="productsLeft">{`Restan: ${this.state.products[i].quantity}`}</div>
+                        {`Nombre: ${this.state.products[random].name}`}
+                        <div className="productsLeft">{`Restan: ${this.state.products[random].quantity}`}</div>
                     </div>
                     <div className="cardPrice">
-                        {`$ ${this.state.products[i].price}`}
+                        {`$ ${this.state.products[random].price}`}
                         <div>
-                            <button onClick={() => this.addingToShoppingCart(this.state.products[i])} className="btnShopping">Agregar al carrito</button>
+                            <button onClick={() => this.addingToShoppingCart(this.state.products[random])} className="btnShopping">Agregar al carrito</button>
                         </div>
                     </div>
                 </div>));

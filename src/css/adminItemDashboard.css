@@ -17,3 +17,23 @@
 .tableMargin {
     margin-bottom: 10px;
 }
+
+#btnRefresh {
+    width: 150px;
+    height: 50px;
+    border-radius: 8px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #86cfda;
+    color: white;
+}
+
+#btnItem {
+    width: 100px;
+    height: 30px;
+    border-radius: 8px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #86cfda;
+    color: white;
+}

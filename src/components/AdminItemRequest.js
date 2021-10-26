@@ -43,12 +43,18 @@ constructor(props) {
         this.getUser();
     }
 
+    refreshComponent() {
+        window.location.reload();
+    }
 
     render() {
         const { purchases } = this.state; 
         return (
             <div className="adminDashboardContainer">
                 <div className="dashboardSize">
+                    <div className="refreshBtn">
+                        <button id="btnRefresh" onClick={() => this.refreshComponent()}>Recargar</button>
+                    </div>
                     {
                         purchases.map((item, index) => {
                             return (
@@ -79,7 +85,7 @@ constructor(props) {
                                     </tbody>
                                     </table>
                                     <div className="tableMargin">
-                                        <button onClick={() => this.deleteItemFromList(item)}>Entregado</button>
+                                        <button id="btnItem" onClick={() => this.deleteItemFromList(item)}>Entregado</button>
                                     </div>
                                 </div>
                             )

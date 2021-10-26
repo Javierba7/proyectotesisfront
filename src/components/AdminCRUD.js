@@ -4,7 +4,6 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import '../css/adminCRUD.css';
 
-
 export default class AdminCRUD extends Component {
     constructor(props) {
         super(props);
@@ -15,7 +14,8 @@ export default class AdminCRUD extends Component {
             name: '',
             quantity: 0,
             price: 0,
-            imgUrl: ''
+            imgUrl: '',
+            valueFrom: ''
         }
     }
 
@@ -65,8 +65,6 @@ export default class AdminCRUD extends Component {
         this.setState({
             [e.target.name]: e.target.value
         });
-
-        this.setState({[e.target.name]: e.target.value});
     }
 
     async onDeleteBtn() {
@@ -104,14 +102,31 @@ export default class AdminCRUD extends Component {
         }
     }
 
+    handleChangeSelect(event) {
+        this.setState({valueFrom: event.target.value});
+    }
+
     notify = (text) => toast(text);
     componentDidMount() {
         this.fetchProducts();
     }
 
+
+    handleLoadLocalFile = (event) => {
+        event.preventDefault();
+        const reader = new FileReader();
+        const file = event.target.files[0];
+        
+        reader.onloadend = () => this.props.onFileLoaded(reader.result);
+        const test = reader.readAsDataURL(file);
+        console.log(test);
+      }
+
+    
     render() {
         const products = this.state.products;
         return (
+            <>
             <div className="adminCrudContainer">
                 <div className="searchTable">
                     <div className="tableProductsSpace">
@@ -157,9 +172,6 @@ export default class AdminCRUD extends Component {
                         <button className="deleteBtn" onClick={() => this.onDeleteBtn()}>Eliminar</button>
                         <button className="updateBtn" onClick={() => this.onUpdateBtn()}>Actualizar</button>
                     </div>
-                    <div>
-                        <button>Crear </button>
-                    </div>
                 </div>
                 <ToastContainer
                             position="top-right"
@@ -173,6 +185,28 @@ export default class AdminCRUD extends Component {
                             pauseOnHover
                         />
             </div>
+            <div>
+                <div>Dar de Alta un nuevo producto</div>
+                <div className="addProductSection">
+                    <div>
+                        <input type="file" onChange={(e) => this.handleLoadLocalFile(e)}/>
+                    </div>
+                    <div className="testDirection">
+                        <span>Nombre: </span><input className="spaceBtnAdd" onChange={(e) => this.handleChange(e)} type="text" name="name" />
+                        <span>Precio: </span><input className="spaceBtnAdd" onChange={(e) => this.handleChange(e)} type="number" name="price" />
+                        <span>Cantidad: </span><input className="spaceBtnAdd" onChange={(e) => this.handleChange(e)} type="number" name="quantity"/>
+                        <select value={this.state.valueFrom} onChange={(e) => this.handleChangeSelect(e)}>
+                            <option value="school">Escuela</option>
+                            <option value="toys">Jugueteria</option>
+                            <option value="office">Oficina</option>
+                            <option value="gifts">Regalos</option>
+                            <option value="shop">Shop</option>
+                        </select>
+                        <button className="btnAddFinal">Agregar</button>
+                    </div>
+                </div>
+            </div>
+            </>
         )
     }
 }
