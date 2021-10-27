@@ -87,7 +87,7 @@ constructor(props) {
                                     </tbody>
                                     </table>
                                     <div>
-                                        Total a pagar: <span>{this.state.finalSum}</span>
+                                        Total a pagar: <span>{`$ ${this.state.finalSum}`}</span>
                                     </div>
                                     <div className="tableMargin">
                                         <button id="btnItem" onClick={() => this.deleteItemFromList(item)}>Entregado</button>

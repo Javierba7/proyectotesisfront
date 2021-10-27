@@ -77,6 +77,8 @@
 .shopCounting {
     width: 70%;
     margin: auto;
+    max-height: 300px;
+    overflow-y: auto;
     border-bottom: 2px solid black;
 }
 

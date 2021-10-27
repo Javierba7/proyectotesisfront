@@ -180,7 +180,7 @@ export default class Dashboard extends Component {
                     <div>Teléfono</div><span>6565271691</span>
                     </div>
                     <div className="footerSocialMedia">
-                    <div>Redes sociales</div><span>Facebook</span>
+                    <div>Redes sociales</div><span> <a href="https://www.facebook.com/Miscel%C3%A1neos-Sandra-113329337797138/" target="_blank"><img id="fbIcon" src="https://luminalco.com/wp-content/uploads/2019/11/FB-ICON.png" alt="facebook"/></a></span>
                     </div>
                 </footer>
                 <ToastContainer
