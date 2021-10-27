@@ -15,7 +15,11 @@ export default class AdminCRUD extends Component {
             quantity: 0,
             price: 0,
             imgUrl: '',
-            valueFrom: ''
+            valueFrom: 'school',
+            file: '',
+            nameAdd: '',
+            priceAdd: '',
+            quantityAdd: ''
         }
     }
 
@@ -112,16 +116,40 @@ export default class AdminCRUD extends Component {
     }
 
 
-    handleLoadLocalFile = (event) => {
+    handleLoadLocalFile(event) {
         event.preventDefault();
-        const reader = new FileReader();
         const file = event.target.files[0];
         
-        reader.onloadend = () => this.props.onFileLoaded(reader.result);
-        const test = reader.readAsDataURL(file);
-        console.log(test);
-      }
+        this.setState({
+            file
+        });
+    }
 
+
+    async onSubmitBtn() {
+        const { nameAdd, quantityAdd, priceAdd, valueFrom: department, file} = this.state; 
+        
+        let formData = new FormData();
+        formData.append('image', file);
+        
+        const newObj = JSON.stringify(
+            {
+                nameAdd,
+                quantityAdd,
+                priceAdd,
+                department,
+            }
+        );
+        formData.append('data', newObj);
+
+
+
+        const savedProduct = await fetch('http://localhost:5000/api/product/add', {
+            method: "POST",
+            body: formData,
+        });
+        console.log(savedProduct);
+    }
     
     render() {
         const products = this.state.products;
@@ -189,12 +217,12 @@ export default class AdminCRUD extends Component {
                 <div>Dar de Alta un nuevo producto</div>
                 <div className="addProductSection">
                     <div>
-                        <input type="file" onChange={(e) => this.handleLoadLocalFile(e)}/>
+                        <input type="file" alt="" onChange={(e) => this.handleLoadLocalFile(e)}/>
                     </div>
                     <div className="testDirection">
-                        <span>Nombre: </span><input className="spaceBtnAdd" onChange={(e) => this.handleChange(e)} type="text" name="name" />
-                        <span>Precio: </span><input className="spaceBtnAdd" onChange={(e) => this.handleChange(e)} type="number" name="price" />
-                        <span>Cantidad: </span><input className="spaceBtnAdd" onChange={(e) => this.handleChange(e)} type="number" name="quantity"/>
+                        <span>Nombre: </span><input className="spaceBtnAdd" onChange={(e) => this.handleChange(e)} type="text" name="nameAdd" />
+                        <span>Precio: </span><input className="spaceBtnAdd" onChange={(e) => this.handleChange(e)} type="number" name="priceAdd" />
+                        <span>Cantidad: </span><input className="spaceBtnAdd" onChange={(e) => this.handleChange(e)} type="number" name="quantityAdd"/>
                         <select value={this.state.valueFrom} onChange={(e) => this.handleChangeSelect(e)}>
                             <option value="school">Escuela</option>
                             <option value="toys">Jugueteria</option>
@@ -202,7 +230,7 @@ export default class AdminCRUD extends Component {
                             <option value="gifts">Regalos</option>
                             <option value="shop">Shop</option>
                         </select>
-                        <button className="btnAddFinal">Agregar</button>
+                        <button className="btnAddFinal" onClick={() => this.onSubmitBtn()}>Agregar</button>
                     </div>
                 </div>
             </div>
