@@ -1,12 +1,24 @@
 .bg-dark {
-    background-image: url('https://www.wallpaperup.com/uploads/wallpapers/2013/02/26/45424/548fc5d10aa5966345f0c74c83e874e7-1400.jpg');
+    background-image: url('https://image.freepik.com/foto-gratis/desenfoque-abstracto-fondo-tono-calido-cielo-color-rosa-melocoton-hermoso-pastel_1258-48269.jpg');
 }
 
 .nav-link {
-    color: #fff!important;
+    color: black!important;
 }
+
 .fieldSearch {
     margin-left: -150px;
+}
+
+.homeImage {
+    width: 50px;
+    height: 50px;
+}
+
+.imgLogo {
+    width: 200px;
+    height: 50px;
+    margin-left: 32vw;
 }
 
 #searchInput {
@@ -19,6 +31,7 @@
     border: 1px solid #fff;
     border-radius: 3px;
 }
+
 
 #searchInput:focus {
     outline: none;

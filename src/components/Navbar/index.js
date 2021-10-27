@@ -21,15 +21,14 @@ const NavbarFunction = ({ verifyToken }) => {
     return (
         <div>
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-                <Link className="navbar-brand" to="/">Miscelaneos Sandra</Link>
+                <Link className="navbar-brand" to="/"><img className="homeImage" src="https://products-proyect.s3.us-west-1.amazonaws.com/home.png"/></Link>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
             </button>
             {verifyToken ? 
             <div className="collapse navbar-collapse" id="navbarNav">
                     <div>
-                        <input type="text" name="searchBtn" id="searchInput"/>
-                        <label id="searchBtn">Buscar</label>
+                        <img className="imgLogo" src="https://products-proyect.s3.us-west-1.amazonaws.com/qqqqqqqqqqq.png" alt=""/>
                     </div> 
                 <ul className="navbar-nav ml-auto">
                     <li className="nav-item">
