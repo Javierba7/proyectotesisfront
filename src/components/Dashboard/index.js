@@ -59,7 +59,7 @@ export default class Dashboard extends Component {
                     </div>
                     <div className="cardDescription">
                         {`Nombre: ${this.state.products[random].name}`}
-                        <div className="productsLeft">{`Restan: ${this.state.products[random].quantity}`}</div>
+
                     </div>
                     <div className="cardPrice">
                         {`$ ${this.state.products[random].price}`}
