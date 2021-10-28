@@ -134,9 +134,9 @@ export default class AdminCRUD extends Component {
         
         const newObj = JSON.stringify(
             {
-                nameAdd,
-                quantityAdd,
-                priceAdd,
+                name: nameAdd,
+                quantity: quantityAdd,
+                price: priceAdd,
                 department,
             }
         );
