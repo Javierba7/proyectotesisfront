@@ -45,8 +45,7 @@ const NavbarFunction = ({ verifyToken }) => {
             : 
             <div className="collapse navbar-collapse" id="navbarNav">
                     <div>
-                        <input type="text" name="searchBtn" id="searchInput"/>
-                        <label id="searchBtn">Buscar</label>
+                        <img className="imgLogo" src="https://products-proyect.s3.us-west-1.amazonaws.com/qqqqqqqqqqq.png" alt=""/>
                     </div>
                 <ul className="navbar-nav ml-auto">
                     <li className="nav-item">
