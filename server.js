@@ -5,12 +5,11 @@ const app = express();
 
 const { PORT = 1337 } = process.env;
 
-app.use(express.static(path.join(__dirname, '/')));
+app.use(express.static(path.join(__dirname, '/build')));
 
 app.get('/*', (req, res) => {
-  console.log('-------');
-  console.log(`${__dirname}/index.html`);
-  res.sendFile(path.join(__dirname, '/app/index.html'));
+  //console.log(`${__dirname}/index.html`);
+  res.sendFile(path.join(__dirname, 'build/index.html'));
 });
 
 app.listen(PORT, () => {
