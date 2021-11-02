@@ -101,7 +101,7 @@ export default class Register extends Component {
                          <div className="form">
                              <input type="text"  className="inputBig" name="secondName"  onChange={this.handleChange}required />
                              <label forhtml="name" className="label-name">
-                                 <span className="content-name">Segundo nombre</span>
+                                 <span className="content-name">Segundo nombre(Opcional)</span>
                              </label>
                          </div>
                          <div className="form">
