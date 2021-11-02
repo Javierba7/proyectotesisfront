@@ -118,7 +118,7 @@ export default class Register extends Component {
                          </div>
                          <div className="formSubmit">
                              <input type="submit" onClick={this.handleSubmit} name="submit" value="Register"/>
-                             <span className="textSpan"><Link to="/login">¿Aun no te registras? vamos da clic aquí </Link></span>
+                             <span className="textSpan"><Link to="/login">Al terminar de llenar los datos da clic en registrar </Link></span>
                          </div>
                          <ToastContainer
                             position="top-right"
