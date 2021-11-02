@@ -8,8 +8,7 @@ constructor(props) {
 
     this.state = {
         purchases: [],
-        _id: '',
-        finalSum: 0
+        _id: ''
     }
 }   
 
@@ -58,6 +57,7 @@ constructor(props) {
                     </div>
                     {
                         purchases.map((item, index) => {
+                            let finalSum = 0;
                             return (
                                 <div>
                                     <table class="table">
@@ -75,7 +75,7 @@ constructor(props) {
                                             item.map((el) => {
                                                 const {date} = el;
                                                 const newDate = new Date(date);
-                                                this.state.finalSum += el.price;
+                                                finalSum += el.price;
                                                 return (<tr>
                                                     <td>{el.name}</td>
                                                     <td>{`$ ${el.price}`}</td>
@@ -87,7 +87,7 @@ constructor(props) {
                                     </tbody>
                                     </table>
                                     <div>
-                                        Total a pagar: <span>{`$ ${this.state.finalSum}`}</span>
+                                        Total a pagar: <span>{`$ ${finalSum}`}</span>
                                     </div>
                                     <div className="tableMargin">
                                         <button id="btnItem" onClick={() => this.deleteItemFromList(item)}>Entregado</button>
