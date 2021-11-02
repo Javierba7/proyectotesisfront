@@ -75,7 +75,7 @@ constructor(props) {
                                             item.map((el) => {
                                                 const {date} = el;
                                                 const newDate = new Date(date);
-                                                this.state.finalSum += el.price;
+                                                this.state.finalSum = el.price;
                                                 return (<tr>
                                                     <td>{el.name}</td>
                                                     <td>{`$ ${el.price}`}</td>
