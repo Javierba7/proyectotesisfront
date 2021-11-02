@@ -14,7 +14,7 @@ constructor(props) {
 }   
 
     async getUser() {
-        const response = await fetch(`http://localhost:5000/api/users/6173ac998f00a2567d34e6ff`);
+        const response = await fetch(`https://proyectotesisfront.herokuapp.com/api/users/6173ac998f00a2567d34e6ff`);
         const user = await response.json();
 
         const { purchases, _id } = user;
@@ -29,7 +29,7 @@ constructor(props) {
         const purchases = this.state.purchases;
         const filteredItem = purchases.filter(el => el !== item);
 
-        await fetch(`http://localhost:5000/api/users/update/6173ac998f00a2567d34e6ff`, {
+        await fetch(`https://proyectotesisfront.herokuapp.com/api/users/update/6173ac998f00a2567d34e6ff`, {
                 method: 'PUT',
                 body: JSON.stringify({purchases: filteredItem}),
                 headers: {

@@ -32,7 +32,7 @@ export default class Register extends Component {
         const { lastName, secondName, secondLastName} = this.state;
 
         try {
-            const response = await fetch('http://localhost:5000/api/users/register', {
+            const response = await fetch('https://proyectotesisfront.herokuapp.com/api/users/register', {
                 method: 'post',
                 body: JSON.stringify({ 
                     email,

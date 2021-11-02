@@ -39,7 +39,7 @@ export default class Section extends Component {
 
     async fetchProducts() {
         console.log(this.props.match.params.sectionName);
-        const response = await fetch(`http://localhost:5000/api/product?department=${this.props.match.params.sectionName}`);
+        const response = await fetch(`https://proyectotesisfront.herokuapp.com/api/product?department=${this.props.match.params.sectionName}`);
         const products = await response.json();
         this.setState({
             products,
@@ -50,7 +50,7 @@ export default class Section extends Component {
         const token =  localStorage.getItem('auth-token');
         const tokenDecoded = await jwt_decode(token);
         const { _id: userId } = tokenDecoded;
-        const response = await fetch(`http://localhost:5000/api/users/${userId}`);
+        const response = await fetch(`https://proyectotesisfront.herokuapp.com/api/users/${userId}`);
         const user = await response.json();
 
         return user;

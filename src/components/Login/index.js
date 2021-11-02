@@ -26,7 +26,7 @@ export default class Register extends Component {
         const { email, password } = this.state;
 
         try {
-            const response = await fetch('http://localhost:5000/api/users/login', {
+            const response = await fetch('https://proyectotesisfront.herokuapp.com/api/users/login', {
                 method: 'post',
                 body: JSON.stringify({ email, password }),
                 headers: {

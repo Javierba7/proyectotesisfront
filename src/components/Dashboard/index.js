@@ -37,7 +37,7 @@ export default class Dashboard extends Component {
 
 
     async getProducts(){
-        const response = await fetch('http://localhost:5000/api/product');
+        const response = await fetch('https://proyectotesisfront.herokuapp.com/api/product');
         const products = await response.json();
 
         this.setState({
@@ -85,7 +85,7 @@ export default class Dashboard extends Component {
         const token =  localStorage.getItem('auth-token');
         const tokenDecoded = await jwt_decode(token);
         const { _id: userId } = tokenDecoded;
-        const response = await fetch(`http://localhost:5000/api/users/${userId}`);
+        const response = await fetch(`https://proyectotesisfront.herokuapp.com/api/users/${userId}`);
         const user = await response.json();
 
         return user;

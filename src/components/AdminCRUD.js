@@ -24,7 +24,7 @@ export default class AdminCRUD extends Component {
     }
 
     async fetchProducts() {
-        const response = await fetch(`http://localhost:5000/api/product`);
+        const response = await fetch(`https://proyectotesisfront.herokuapp.com/api/product`);
         const products = await response.json();
 
 
@@ -76,7 +76,7 @@ export default class AdminCRUD extends Component {
 
         if (confirm) {
             
-            await fetch(`http://localhost:5000/api/product/delete/${this.state._id}`, {
+            await fetch(`https://proyectotesisfront.herokuapp.com/api/product/delete/${this.state._id}`, {
                 method: 'delete'
             });
             this.notify('Se ha borrado correctamente');
@@ -93,7 +93,7 @@ export default class AdminCRUD extends Component {
             price: this.state.price
         }
 
-            await fetch(`http://localhost:5000/api/product/update/${this.state._id}`, {
+            await fetch(`https://proyectotesisfront.herokuapp.com/api/product/update/${this.state._id}`, {
                 method: 'PUT',
                 body: JSON.stringify(obj),
                 headers: {
@@ -143,7 +143,7 @@ export default class AdminCRUD extends Component {
 
 
 
-        const savedProduct = await fetch('http://localhost:5000/api/product/add', {
+        const savedProduct = await fetch('https://proyectotesisfront.herokuapp.com/api/product/add', {
             method: "POST",
             body: formData,
         });

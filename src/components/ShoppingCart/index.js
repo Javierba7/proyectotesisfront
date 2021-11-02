@@ -93,7 +93,7 @@ export default class ShoppingCart extends Component {
         const { _id: userId } = tokenDecoded;
 
         try {
-        await fetch(`http://localhost:5000/api/users/${userId}/update`, {
+        await fetch(`https://proyectotesisfront.herokuapp.com/api/users/${userId}/update`, {
                 method: 'POST',
                 body: JSON.stringify({result: shoppingCart}),
                 headers: {
@@ -101,7 +101,7 @@ export default class ShoppingCart extends Component {
                 }
         });
 
-        await fetch(`http://localhost:5000/api/users/6173ac998f00a2567d34e6ff/update`, {
+        await fetch(`https://proyectotesisfront.herokuapp.com/api/users/6173ac998f00a2567d34e6ff/update`, {
             method: 'POST',
             body: JSON.stringify({result: shoppingCart}),
             headers: {
