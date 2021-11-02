@@ -163,7 +163,7 @@ export default class ShoppingCart extends Component {
                                         }
                                     </tbody>
                                 </table> :
-                                <div className="shoppingMessage">Ve al menu principal y agrega algo!</div>
+                                <div className="shoppingMessage">Tu compra se ah realizado correctamente! Ve al menu principal y agrega algo!</div>
                             }
                         </div>
                         <div className="btnSectionCart">
