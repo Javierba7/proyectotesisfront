@@ -33,7 +33,6 @@ export default class AdminCRUD extends Component {
         });
     };
 
-
     searchFunction() {
         var input, filter, table, tr, td, i, txtValue;
         input = document.getElementById("myInput");
