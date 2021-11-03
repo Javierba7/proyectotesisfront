@@ -54,7 +54,7 @@
 
 .btnDeleteLocal {
     text-align: center;
-    background-color: rgba(255, 0, 0, 0.391);
+    background-color: rgba(12, 11, 11, 0.391);
     color: white;
     border: none;
     width: 100px;
@@ -118,7 +118,7 @@
 }
 
 #cleanLocal {
-    background-color: rgba(255, 0, 0, 0.391);
+    background-color: rgba(19, 17, 17, 0.391);
     color: #fff;
     font-weight: bold;
     border: 1px solid black;
