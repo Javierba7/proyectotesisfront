@@ -89,7 +89,7 @@ export default class Register extends Component {
                          <div className="form">
                              <input type="password" className="inputBig" name="password"  onChange={this.handleChange}required />
                              <label forhtml="password" className="label-name">
-                                 <span className="content-name">Contraseña(Min. 4 digitos)</span>
+                                 <span className="content-name">Contraseña(Min. 6 digitos)</span>
                              </label>
                          </div>
                          <div className="form">
