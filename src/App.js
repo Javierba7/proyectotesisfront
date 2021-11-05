@@ -9,6 +9,8 @@ import Profile from './components/Profile';
 import ShoppingCart from './components/ShoppingCart';
 import AdminCRUD from './components/AdminCRUD';
 import AdminItemRequest from './components/AdminItemRequest';
+import Adminlogin from './components/Adminlogin.js'; 
+
 
 function App() {
   return (
@@ -22,6 +24,7 @@ function App() {
         <Route exact path="/shoppingCart" component={ShoppingCart}/>
         <Route exact path="/admin/update" component={AdminCRUD} />
         <Route exact path="/admin/dashboard" component={AdminItemRequest} />
+        <Router exact path="/admin/login" component={Adminlogin} />
       </Router>
     </div>
   );
