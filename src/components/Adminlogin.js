@@ -1,13 +1,107 @@
-import React,  { Component } from "react";
+import React, { Component } from 'react';
+import {Link, Redirect} from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
+import '../css/login.css';
 
-export default class Adminlogin extends Component {
+export default class Register extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            email: '',
+            password: '',
+            token: '',
+            session: false
+        }
+    }
+
+    handleChange = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value
+        });
+    }
+
+    onSubmit = async (e) => {
+        e.preventDefault();
+        const { email, password } = this.state;
+
+        if (email === 'sandrajuarezalvarez@gmail.com') {
+            try {
+                const response = await fetch('https://proyectobacktesis.herokuapp.com/api/users/login', {
+                    method: 'post',
+                    body: JSON.stringify({ email, password }),
+                    headers: {
+                        "content-type": "application/json"
+                    }
+                });
+                const data = await response.json();
+                
+                if ( data.error ){ 
+                   console.log(data.error);
+                   this.notify(data.error);
+                } else { 
+                    localStorage.setItem('auth-token', data.token);
+                    this.setState({
+                        session: true
+                    })
+                    this.setState({ token: data.token})
+                }
+            } catch (err) {
+                console.log(err);
+            }
+        } else {
+            this.notify('Usuario incorrecto');
+        }
+
+         
+    }
+
+    notify = (text) => toast(text);
+
 
     render() {
+        const session = this.state.session;
+
+        if (!session) {
+            return <Redirect to="/admin/update" />
+        }
+
         return (
-            <div>
-                hello world
-            </div>  
+                <div className="containerLogin">
+                    <div className="imgContainer">
+                        <div id="titleForm">Bienvenido Administrador</div>
+                    </div>
+                    <div className="formContainer">
+                            <div className="form">
+                                <input type="text" name="email" className="inputBig" onChange={this.handleChange} required />
+                                <label forhtml="name" className="label-name">
+                                    <span className="content-name">Correo</span>
+                                </label>
+                            </div>
+                            <div className="form">
+                                <input type="password" name="password" className="inputBig"  onChange={this.handleChange} required />
+                                <label forhtml="password" className="label-name">
+                                    <span className="content-name">Contraseña</span>
+                                </label>
+                            </div>
+                            <form className="formSubmit">
+                                <input type="submit" onClick={this.onSubmit} name="submit" value="Login" />
+                                <span className="textSpan"><Link to="/register">¿Aun no te registras? vamos da clic aquí</Link></span>
+                            </form>
+                        </div>
+                        <ToastContainer
+                            position="top-right"
+                            autoClose={2000}
+                            hideProgressBar={false}
+                            newestOnTop={false}
+                            closeOnClick
+                            rtl={false}
+                            pauseOnFocusLoss
+                            draggable
+                            pauseOnHover
+                        />
+                </div>
         )
     }
-}
+};
