@@ -43,6 +43,10 @@ constructor(props) {
         this.getUser();
     }
 
+    toUpdateAdmin() {
+        this.props.history.push('/admin/update');
+    }
+
     refreshComponent() {
         window.location.reload();
     }
@@ -54,6 +58,9 @@ constructor(props) {
                 <div className="dashboardSize">
                     <div className="refreshBtn">
                         <button id="btnRefresh" onClick={() => this.refreshComponent()}>Recargar</button>
+                    </div>
+                    <div className="refreshBtn">
+                        <button id="btnRefresh" onClick={() => this.toUpdateAdmin()}>Regresar</button>
                     </div>
                     {
                         purchases.map((item, index) => {

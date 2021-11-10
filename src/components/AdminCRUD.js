@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { ToastContainer, toast } from 'react-toastify';
+import { Redirect } from 'react-router-dom';
+import jwt_decode from 'jwt-decode';
 import 'react-toastify/dist/ReactToastify.css';
 
 import '../css/adminCRUD.css';
@@ -19,14 +21,14 @@ export default class AdminCRUD extends Component {
             file: '',
             nameAdd: '',
             priceAdd: '',
-            quantityAdd: ''
+            quantityAdd: '',
+            session: false
         }
     }
 
     async fetchProducts() {
         const response = await fetch(`https://proyectobacktesis.herokuapp.com/api/product`);
         const products = await response.json();
-
 
         this.setState({
             products,
@@ -109,9 +111,32 @@ export default class AdminCRUD extends Component {
         this.setState({valueFrom: event.target.value});
     }
 
+    async fetchUser() {
+        const token =  localStorage.getItem('auth-token');
+        if (!token ) return this.props.history.push("/admin/login");;
+        
+        const tokenDecoded = await jwt_decode(token);
+        const { _id: userId } = tokenDecoded;
+        const response = await fetch(`https://proyectobacktesis.herokuapp.com/api/users/${userId}`);
+        const user = await response.json();
+        console.log(user);
+        if (user.email !== 'sandrajuarezalvarez74@gmail.com') {
+            this.props.history.push("/admin/login");
+        }
+        return this.setState({
+            session: true
+        })
+    } 
+
+    async test() {
+        await this.fetchUser();
+    }
+
     notify = (text) => toast(text);
-    componentDidMount() {
+
+    async componentDidMount() {
         this.fetchProducts();
+        await this.fetchUser();
     }
 
 
@@ -143,15 +168,23 @@ export default class AdminCRUD extends Component {
 
 
 
-        const savedProduct = await fetch('https://proyectobacktesis.herokuapp.com/api/product/add', {
+        await fetch('https://proyectobacktesis.herokuapp.com/api/product/add', {
             method: "POST",
             body: formData,
         });
-        console.log(savedProduct);
     }
     
+    cleanLocal(e) {
+        localStorage.clear();
+        this.props.history.push("/admin/login");
+    };
+
+    toItemsRequest (e) {
+        this.props.history.push('/admin/dashboard');
+    }
     render() {
         const products = this.state.products;
+
         return (
             <>
             <div className="adminCrudContainer">
@@ -178,6 +211,12 @@ export default class AdminCRUD extends Component {
                     </div>
                 </div>
                 <div className="productInformationAdmin">
+                    <div>
+                        <button className="adminLogOut" onClick={(e) => this.cleanLocal(e)}>Cerrar Sesión</button>
+                    </div>
+                    <div>
+                        <button className="adminLogOut" onClick={(e) => this.toItemsRequest(e)}>Pedidos</button>
+                    </div>
                     <div className="informationImg">
                         <img className="imgSizeInformation" src={this.state.imgUrl} alt=""/>
                     </div>

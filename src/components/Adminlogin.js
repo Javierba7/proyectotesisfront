@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Link, Redirect} from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
+import jwt_decode from 'jwt-decode';
 import 'react-toastify/dist/ReactToastify.css';
 
 import '../css/login.css';
@@ -12,7 +13,9 @@ export default class Register extends Component {
             email: '',
             password: '',
             token: '',
-            session: false
+            session: false,
+            validUser: false,
+            user: {}
         }
     }
 
@@ -26,7 +29,7 @@ export default class Register extends Component {
         e.preventDefault();
         const { email, password } = this.state;
 
-        if (email === 'sandrajuarezalvarez@gmail.com') {
+        if (email === 'sandrajuarezalvarez74@gmail.com') {
             try {
                 const response = await fetch('https://proyectobacktesis.herokuapp.com/api/users/login', {
                     method: 'post',
@@ -38,7 +41,6 @@ export default class Register extends Component {
                 const data = await response.json();
                 
                 if ( data.error ){ 
-                   console.log(data.error);
                    this.notify(data.error);
                 } else { 
                     localStorage.setItem('auth-token', data.token);
@@ -57,13 +59,38 @@ export default class Register extends Component {
          
     }
 
+    async fetchUser() {
+        const token =  localStorage.getItem('auth-token');
+        if (!token ) return '';
+        
+        const tokenDecoded = await jwt_decode(token);
+        const { _id: userId } = tokenDecoded;
+        const response = await fetch(`https://proyectobacktesis.herokuapp.com/api/users/${userId}`);
+        const user = await response.json();
+
+        if (user.email !== 'sandrajuarezalvarez74@gmail.com') {
+            localStorage.clear();
+            return this.setState({
+                session: false
+            })
+        }
+
+        return this.setState({
+            session: true
+        });
+    } 
+
+    async componentDidMount() {
+        await this.fetchUser();
+    }
+
     notify = (text) => toast(text);
 
 
     render() {
         const session = this.state.session;
-
-        if (!session) {
+    
+        if (session) {
             return <Redirect to="/admin/update" />
         }
 
@@ -87,12 +114,14 @@ export default class Register extends Component {
                             </div>
                             <form className="formSubmit">
                                 <input type="submit" onClick={this.onSubmit} name="submit" value="Login" />
-                                <span className="textSpan"><Link to="/register">¿Aun no te registras? vamos da clic aquí</Link></span>
+                                <div>
+                                    <Link to="/login">Regresar</Link>
+                                </div>
                             </form>
                         </div>
                         <ToastContainer
-                            position="top-right"
-                            autoClose={2000}
+                            position="bottom-right"
+                            autoClose={1500}
                             hideProgressBar={false}
                             newestOnTop={false}
                             closeOnClick

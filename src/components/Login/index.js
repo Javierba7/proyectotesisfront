@@ -76,7 +76,7 @@ export default class Register extends Component {
                                 <input type="submit" onClick={this.onSubmit} name="submit" value="Login" />
                                 <span className="textSpan"><Link to="/register">¿Aun no te registras? vamos da clic aquí</Link></span>
                             </form>
-                        </div>
+                    </div>
                         <ToastContainer
                             position="top-right"
                             autoClose={2000}
@@ -88,7 +88,10 @@ export default class Register extends Component {
                             draggable
                             pauseOnHover
                         />
-                </div>
+                    <div>
+                            <Link to="/admin/login">¿Eres administrador?</Link>
+                    </div>
+            </div>
         )
     }
 };
